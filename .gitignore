@@ -1,0 +1,18 @@
+# --- OS / editor cruft ---
+.DS_Store
+Thumbs.db
+*.swp
+*~
+.vscode/
+.idea/
+
+# --- Node ---
+node_modules/
+npm-debug.log*
+
+# --- Build scratch (NOT the site assets) ---
+# The published site needs these committed, so they are intentionally NOT ignored:
+#   dist/data.js, dist/manifest.json, dist/overlays.json, dist/overview_*.webp,
+#   dist/sectors/<CODE>/z<z>_<col>_<row>[_roof].webp  (the tile-pyramid tiles)
+# Only the debug renders/screenshots are excluded:
+dist/debug/

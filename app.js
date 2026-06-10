@@ -152,7 +152,10 @@
   const layers = { grid: true, detail: true, roofs: true, cool: false, town: true, mine: true, sam: true, heli: true, ship: true, garrison: false, patrol: false, poi: false, npc: false, loot: false, creatures: false, roads: false, terrain: false, bigmap: true };
   const BIG_COL = '#3cc85a', STD_COL = '#e6912e'; // bigmap-coverage tint: green = upgraded 360², orange = vanilla 160²
   for (const [k, id] of [['grid', 't-grid'], ['detail', 't-detail'], ['roofs', 't-roofs'], ['bigmap', 't-bigmap']]) {
-    const el = document.getElementById(id); el.addEventListener('change', () => { layers[k] = el.checked; schedule(); });
+    const el = document.getElementById(id);
+    layers[k] = el.checked; // sync to the actual checkbox on load: browsers restore checkbox state across
+                            // reloads, so without this the map renders the JS defaults while the boxes show off
+    el.addEventListener('change', () => { layers[k] = el.checked; schedule(); });
   }
   // Legend doubles as per-layer visibility toggles.
   (function buildLegend() {
